@@ -1,12 +1,17 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import classes from "./App.css"
+import Mainpage from './Mainpage/Mainpage'
+import Pagination from './Pagination/Pagination'
+import ProgressLoader from './ProgressLoader/ProgressLoader'
+import Topbar from './Topbar/Topbar'
 export class App extends Component {
 
   state = {
     data: [],
-    isLoading: false,
-    datas: []
+    isLoading: true,
+    datas: [],
+    id: 1
   }
 
   // to get the id of the news
@@ -38,13 +43,16 @@ export class App extends Component {
 
   componentDidMount() {
 
+    setInterval(() => {
 
-    this.getInfo().then(response => {
-      // console.log(response)
+      this.getInfo().then(response => {
+        // console.log(response)
 
-      this.setState({ data: response })
-      this.setState({ datas: this.state.data })
-    })
+        this.setState({ data: response })
+        this.setState({ datas: this.state.data })
+        this.setState({ isLoading: false })
+      })
+    }, 6000)
   }
 
 
@@ -68,6 +76,7 @@ export class App extends Component {
     if (n === 4) {
       this.setState({ datas: this.state.data.slice(15, 20) })
     }
+    this.setState({ id: n })
   }
 
 
@@ -76,72 +85,25 @@ export class App extends Component {
     let filtData = this.state.data.filter(item => {
       return (item.by.toLowerCase().includes(e.target.value.toLowerCase()) || item.url.toLowerCase().includes(e.target.value.toLowerCase()) || item.title.toLowerCase().includes(e.target.value.toLowerCase()))
     })
-    this.setState({datas:filtData})
+    this.setState({ datas: filtData })
   }
 
   render() {
 
     // console.log(this.state.data)
     // console.log(this.state.isLoading)
-    return (
+
+    return this.state.isLoading === true ? (<ProgressLoader />) : (
+
       <div className="App">
-        {/* Topbar start */}
-        <div className='Topbar'>
 
-          <h3>Search Hacker News</h3>
-          <input type="search" placeholder="search stories by title, url or author" onChange={this.HandleInputField} />
+        <Topbar HandleInputField={this.HandleInputField} />
 
-        </div>
-        {/* Topbar end */}
+        <Mainpage datas={this.state.datas} />
 
-        {/* Mainpage start */}
-        <div className="Mainpage">
+        <Pagination HanldePagination={this.HanldePagination} id={this.state.id} />
 
-          {
-            this.state.datas.slice(0, 5).map((item, index) => {
-              return (
-                <div className='Card' key={index}>
-                  <h4 className='Title'>{item.title}</h4>
-                  <h5 class='Url'>{item.url}</h5>
-                  <span className='Author'>author: {item.by} </span><span className='Score'> score: {item.score}</span>
-
-                </div>
-
-              )
-            })
-          }
-
-
-        </div>
-        {/* Mainpage end */}
-
-        {/* Pagination start */}
-
-        <div className='Pagination' >
-
-          {
-            [1, 2, 3, 4].map(item => {
-              return (
-                <div className='Box' key={item} onClick={() => this.HanldePagination(item)}>
-                  {item}
-                </div>
-
-              )
-            })
-          }
-
-
-
-
-          {/* Pagination end */}
-
-
-
-
-
-        </div>
-
-      </div>
+      </div >
     )
   }
 }

@@ -1,0 +1,27 @@
+.Pagination{
+    display: flex;
+    margin-top:25px;
+    margin-left: 40%;
+  }
+  
+  .Box{
+    width:30px;
+    height:30px;
+    background-color: grey;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    border:1px solid black;
+    text-align: center;
+  }
+  
+  .Active{
+    width:30px;
+    height:30px;
+    background-color: black;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    border:1px solid red;
+    text-align: center;
+  }

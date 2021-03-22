@@ -1,57 +1,8 @@
 
 
-.Topbar{
-width:90%;
-margin:auto;
-height: 70px;
-background-color: #FF742B;
-display: flex;
-align-items: center;
-
-}
 
 
-input{
-  width:500px;
-  height:40px;
-  margin-left: 50px;
-
-}
 
 
-.Mainpage{
-  width:90%;
-  height:500px;
-  /* background-color: grey; */
-  box-shadow: 2px 4px 4px black;
-  margin: auto;
-  /* display: flex; */
-  
-}
-
-.Pagination{
-  display: flex;
-  margin-top:25px;
-  margin-left: 40%;
-}
-
-.Box{
-  width:30px;
-  height:30px;
-  background-color: black;
-  color: white;
-  margin-left: 10px;
-  margin-right: 10px;
-  border:1px solid black;
-  text-align: center;
-}
 
 
-.Card{
-  box-shadow: 2px 4px 4px grey;
-  margin:35px
-}
-
-.Title,.Author,.Url,.Score{
-margin:0
-}

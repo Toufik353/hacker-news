@@ -1,0 +1,18 @@
+.Mainpage{
+    width:90%;
+    height:500px;
+    /* background-color: grey; */
+    box-shadow: 2px 4px 4px black;
+    margin: auto;
+    /* display: flex; */
+    
+  }
+  
+.Card{
+  box-shadow: 2px 4px 4px grey;
+  margin:35px
+}
+
+.Title,.Author,.Url,.Score{
+margin:0
+}

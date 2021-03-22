@@ -1,0 +1,18 @@
+
+.Topbar{
+    width:90%;
+    margin:auto;
+    height: 70px;
+    background-color: #FF742B;
+    display: flex;
+    align-items: center;
+    
+    }
+    
+    
+    input{
+      width:500px;
+      height:40px;
+      margin-left: 50px;
+    
+    }
