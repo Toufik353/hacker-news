@@ -7,7 +7,7 @@ export default class Topbar extends Component {
             <div className='Topbar'>
 
                 <h3>Search Hacker News</h3>
-                <input type="search" placeholder="search stories by title, url or author" onChange={this.props.HandleInputField} />
+                <input type="search" placeholder="search stories by title, url or author" onChange={(e) => this.props.HandleInputField(e)} />
 
             </div>
         )
